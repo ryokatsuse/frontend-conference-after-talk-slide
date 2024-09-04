@@ -1,11 +1,11 @@
 ---
 # You can also start simply with 'default'
-theme: seriph
+theme: default
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
+background: false
 # some information about your slides (markdown enabled)
-title: Welcome to Slidev
+title: shadcn/uiで考えるコンポーネント設計
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
@@ -22,15 +22,16 @@ transition: slide-left
 mdc: true
 ---
 
-# Welcome to Slidev
+# shadcn/uiで考えるコンポーネント設計
 
-Presentation slides for developers
-
+ゆめみ×LayerX×サイボウズ3社合同フロントエンドカンファレンス北海道2024後夜祭＠東京
+2024/09/06
+<!--
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
     Press Space for next page <carbon:arrow-right class="inline"/>
   </span>
-</div>
+</div> -->
 
 <div class="abs-br m-6 flex gap-2">
   <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
@@ -47,593 +48,414 @@ The last comment block of each slide will be treated as slide notes. It will be 
 -->
 
 ---
-transition: fade-out
+layout: image-right
+image: ./image/ryokatsu.jpg
+backgroundSize: 50%
 ---
 
-# What is Slidev?
+# About
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
+- Infixer(Ryo Katsuse)
+- 株式会社ゆめみ
+- フロントエンドエンジニア
+- 放送大学3年生
+- アウトプット
+  - [X](https://x.com/ryo__kts)（Twitter）
+  - [Cosense（旧scrapbox）](https://scrapbox.io/ryokatsu/)
+  - [ブログ](https://www.ryokatsu.dev/)
+  - [GitHub](https://github.com/ryokatsuse)
+- 北海道で食べた美味しかったもの
+  - ジンギスカン
 <br>
 <br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
 
 <!--
 You can have `style` tag in markdown to override the style for the current page.
 Learn more: https://sli.dev/features/slide-scope-style
 -->
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
 
 <!--
 Here is another comment.
 -->
 
 ---
-transition: slide-up
-level: 2
+transition: slide-left
 ---
 
-# Navigation
+## ちょっと宣伝
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
+アクセシビリティLT会 #2をLINEヤフーさまと共催で大阪にて行います！
 
-## Keyboard Shortcuts
 
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
-<!-- https://sli.dev/guide/animations.html#click-animation -->
 <img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
+  class="text-center m-auto w-100"
+  src="./image/a11y_lt_banner.png"
+  alt="YUMEMI.grow アクセシビリティLT会"
 />
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+
+開催：2024/10/10 (木):LINEヤフー株式会社 大阪グランフロントオフィス（オンラインでも配信！）
+
+YUMEMI.growの[Compassページ](https://connpass.com/user/yumemi/open/)にて近日公開！
+
+前回のアクセシビリティLT会の[内容](https://yumemi.connpass.com/event/323801/)
+
+
 
 ---
-layout: two-cols
-layoutClass: gap-16
+transition: slide-left
 ---
 
-# Table of contents
+# お品書き
 
-You can use the `Toc` component to generate a table of contents for your slides:
+- shadcn/uiとは
+  - コンポーネントの思想
+- cvaを用いた設計
+- formコンポーネントについて
+- 案件でつかったみた感想
+- まとめ
 
-```html
-<Toc minDepth="1" maxDepth="1"></Toc>
-```
+本日は、採択されなかったプロポーザル（LT5分枠）についてお話します！
 
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
+shadcn/uiの話をしますが、最近はReact Ariaにハマっています。。。！
 
-::right::
+<img
+  class="w-100"
+  src="./image/proposal.png"
+  alt="YUMEMI.grow アクセシビリティLT会"
+/>
 
-<Toc v-click minDepth="1" maxDepth="2"></Toc>
+---
+layout: center
+transition: slide-left
+---
+
+# shadcn/uiとは
 
 ---
 layout: image-right
-image: https://cover.sli.dev
+image: ./image/shadcn-top.png
+transition: slide-left
 ---
 
-# Code
+# shadcn/uiとは
 
-Use code snippets and get the highlighting directly, and even types hover!
+- インストール不要で、ソースコードをコピペだけで使用できるコンポーネント集
+- コンポーネントを好きなようにカスタマイズ可能
+- 依存関係を気にせず好きなコンポーネントを好きな分だけ導入可能
+- [v0](https://v0.dev/)で吐き出されるコードはshadcn/uiベースのもの
 
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
-
----
-level: 2
----
-
-# Shiki Magic Move
-
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
-
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
-
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
-
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
-}
-```
-
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
-}
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
+<small><a href="https://ui.shadcn.com/">shadcn/ui公式サイト</a> </small>
 
 ---
 
-# Components
+# 実際にプロジェクトで導入してみた
 
-<div grid="~ cols-2 gap-4">
-<div>
+- 小-中規模の決済システムのようなアプリケーション
+- システムの構成上凝ったデザインがなくシンプルなUI
+- Next.jsのPage Routerでの開発
+- 開発期間が短い
+  - コンポーネント開発に時間を割けない
 
-You can use Vue components directly inside your slides.
+上記を踏まえた上で、プリミティブなコンポーネントがまとまったshadcn/uiを採用✌
 
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
+- ~~PandaCSS🐼~~
+  - shadcn/ui以外の個別のレイアウトなどを実装する際に採用したが、オーバーヘッドがあったり、TailwindCSSの世界線で収まると判断したため早い段階でやめた
 
-```html
-<Counter :count="10" />
-```
+shadcn/uiは、プリミティブでシンプルなコンポーネントが揃っているので、大規模で複合的なコンポーネントや、コンポーネントの数が多いようなアプリケーションでは向いていないかもしれない
 
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
+[Mantine](https://mantine.dev/)など最初からコンポーネントが豊富なものが良さそう
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
 
 ---
-class: px-20
+layout: center
+transition: slide-left
 ---
 
-# Themes
+# shadcn/uiの思想 構造とスタイルの分離
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
 ---
-theme: default
+layout: image-right
+image: ./image/architecture-overview.webp
+backgroundSize: contain
 ---
-```
 
-```yaml
+# 構造
+
+- ヘッドレスUI
+  - RadixUIをベースにアクセシビリティ対応だったりインタラクションの部分を提供している
+  - DatePickerは[React DayPicker](https://daypicker.dev/)を使っている
+  - フォームにはついては[React Hook Form](https://react-hook-form.com/)、テーブルについては[TanStack Table](https://tanstack.com/table/latest)など
+
+<small><a href="https://manupa.dev/blog/anatomy-of-shadcn-ui">The anatomy of shadcn/ui</a> </small>
+
 ---
-theme: seriph
+layout: image-right
+image: ./image/architecture-overview.webp
+backgroundSize: contain
 ---
-```
 
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
+# スタイル
 
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
+  - コアな部分のCSSがTailwindCSS
+  - class文字列の連結など、ユーティリティな管理にはtwMergeとclsx
+  - グローバルなスタイルはTailwind.config
+  - 各種のVariant管理にはCVAを使用（後述します）
 
-</div>
-
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
+  <small><a href="https://manupa.dev/blog/anatomy-of-shadcn-ui">The anatomy of shadcn/ui</a> </small>
 
 ---
 
-# Clicks Animations
 
-You can add `v-click` to elements to add a click animation.
+## なぜこうなっているのか？
 
-<div v-click>
-
-This shows up when you click the slide:
-
-```html
-<div v-click>This shows up when you click the slide.</div>
-```
-
-</div>
+[Introduction](https://ui.shadcn.com/docs)に記述がある
 
 <br>
 
-<v-click>
-
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div mt-20 v-click>
-
-[Learn more](https://sli.dev/guide/animations#click-animation)
-
-</div>
-
----
-
-# Motions
-
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
-```
-
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn more](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box. Powered by [KaTeX](https://katex.org/).
-
-<div h-3 />
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$ {1|3|all}
-\begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
-\end{aligned}
-$$
-
-[Learn more](https://sli.dev/features/latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
-
----
-foo: bar
-dragPos:
-  square: 691,32,167,_,-16
----
-
-# Draggable Elements
-
-Double-click on the draggable elements to edit their positions.
+> Why copy/paste and not packaged as a dependency?
 
 <br>
 
-###### Directive Usage
+> The idea behind this is to give you ownership and control over the code, allowing you to decide how the components are built and styled. Start with some sensible defaults, then customize the components to your needs. One of the drawbacks of packaging the components in an npm package is that the style is coupled with the implementation. The design of your components should be separate from their implementation.
 
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
+コードの所有権と制御を与えます！
+
+コンポーネントの構築方法とスタイルを決定できるようにすることが重要と考えています。
+
+
+***パッケージの欠点の1つはパッケージ化すると、スタイルと実装が密結合なっている。***
+
+コンポーネントのデザインは実装と切り離すべき！！
+
+---
+layout: center
+transition: slide-left
+---
+
+# CVAについて
+
+---
+
+## こういうやつ
+
+
+``` tsx
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
 ```
+
+---
+
+# CVAとは
+
+- プライマリー、セカンダリーボタンのようなコンポーネントを実装するとき
+  - classnamesやclsxなどを使って条件分岐によってスタイルを切り替える
+  - そもそもコンポーネントを分割してしまう
+  - 大量のpropsがあると何を渡せばいいかわからなくなる。。。
+- そんな悩みを解決してくれるのがCVA！
+- 最終的に出力されるCSSがどのような状態のスタイルなのかが構造化されているので見やすい
+- [FigmaのVariants](https://help.figma.com/hc/ja/articles/360056440594-%E3%83%90%E3%83%AA%E3%82%A2%E3%83%B3%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BD%BF%E7%94%A8)の概念をそのままコードに落とし込めるようなイメージ
 
 <br>
 
-###### Component Usage
-
-```md
-<v-drag text-3xl>
-  <carbon:arrow-up />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
-```
-
-<v-drag pos="663,206,261,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
-  </div>
-</v-drag>
-
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-
-###### Draggable Arrow
-
-```md
-<v-drag-arrow two-way />
-```
-
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
-
----
-src: ./pages/imported-slides.md
-hide: false
----
+ちなみに、TailwindCSSの場合は、cvaより拡張性の高い[Tailwind Variants](https://www.tailwind-variants.org/)があります
 
 ---
 
-# Monaco Editor
+# Buttonコンポーネントの構造
 
-Slidev provides built-in Monaco Editor support.
+```tsx
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+ 
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Button.displayName = "Button"
+ 
+export { Button, buttonVariants }
 
-Add `{monaco}` to the code block to turn it into an editor:
-
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
-
-const arr = ref(emptyArray(10))
 ```
 
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
 
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
+---
 
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
+# Dialogコンポーネント
+
+- それぞれのパーツを組み合わせて使うようになっている
+
+``` tsx
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="primary">open</Button>
+  </DialogTrigger>
+  <DialogHeader>ヘッダー</DialogContent>
+  <DialogContent className="flex flex-col">
+    <p>コンテンツ</p>
+  </DialogContent>
+  <DialogFooter>フッター</DialogFooter>
+</Dialog>
+
+// 使用例
+<Dialog
+  triggerButton={<Button variant="primary" onClick={dialogOpen}>open</Button>}
+  header='ヘッダー'
+  content={<p>コンテンツ</p>}
+  footer='フッター'
+/>
 ```
 
 ---
 layout: center
-class: text-center
+transition: slide-left
 ---
 
-# Learn More
+# Formコンポーネント
 
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
 
-<PoweredBySlidev mt-10 />
+---
+layout: two-cols
+---
+
+# Formコンポーネント
+
+- shadcn/uiにはFormコンポーネントがある
+- 内部的にReact Hook Formを使っている
+- 実際のプロジェクトでもFormコンポーネントを使った。
+- 普段からReact Hook Formを使っていればそこまでハマることはない。
+
+::right::
+
+``` tsx
+<Form {...form}>
+  <form className="w-60 px-2" onSubmit={handleSubmit(onSubmit)}>
+    <FormField
+      control={form.control}
+      name="label"
+      render={({ field: { value, onChange } }) => (
+        <FormItem>
+          <FormLabel>ラベル</FormLabel>
+          <FormControl>
+            <NumberInput
+              value={value}
+              onValueChange={(value) => {
+                onChange(value.value);
+              }}
+              isError={isDefined(form.formState.errors.label)}
+            />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+    <p>Current value is: {form.watch('label')}</p>
+    <Button type="submit" className="mt-4">
+      Submit
+    </Button>
+  </form>
+</Form>
+```
+
+---
+
+# しかしReact Hook Formは使いたくない！
+
+- React Hook Formは、ドキュメントが分かりにくい！！！（個人の主観）
+- React Server Componentの登場によって雲行きが怪しくなっている。
+- なんかいいライブラリがないかなー
+- [Conform](https://conform.guide/)といライブラリがあるみたいだよ
+- シンプルだし、機能的にも良さそう！
+- ***shadcn/uiはプリミティブなInputなどが揃っているので、Formコンポーネントだけネイティブのformに置き換えれば実装できる！！！！***
+
+---
+layout: center
+transition: slide-left
+---
+
+# 案件でつかったみた感想
+
+---
+layout: two-cols
+---
+
+# 案件でつかったみた感想
+- 実装するアプリケーションが凝ったデザインがシンプルで、コンポーネントの数も多くない場合は選択肢の一つ
+- 実際にほとんどコピペだけの状態で構造は利用して、CSSはデザイントークン（色、タイポグラフィなど）の微修正だけでコンポーネントがすぐにできた
+- フォームコンポーネントについては、特にハマることもなかった。
+- shadcn/uiではない独自コンポーネントでもcvaを使ってCSSを管理したことで統一感が生まれた
+- classNameを渡すことができてしまうので、ルールなどをチームと話し合うと良さそう
+
+::right::
+
+```tsx
+
+const BlockVariants = cva('flex w-full items-center justify-between rounded-lg px-4 py-5', {
+  variants: {
+    bgColor: {
+      primary: 'bg-main-primary-dark',
+      error: 'bg-unique-error',
+      disabled: 'bg-text-disable',
+    },
+  },
+});
+
+const Block: FC<BlockProps> = ({ variant, amount }) => {
+  return (
+    <div className={BlockVariants({ bgColor: variant })}>
+      <p className="text-large text-base-white">{TypeText[variant]}</p>
+      <div className="text--block text-base-white">
+        <div className="inline-block">
+          <span>{numericFormatter(amount.toString(), { thousandSeparator: true })}</span>
+          <span>円</span>
+        </div>
+        <p className="inline-block px-2 align-bottom text-small">テスト</p>
+      </div>
+    </div>
+  );
+};
+
+export { Block };
+
+```
+
+---
+
+# まとめ
+
+- shadcn/uiはプリミティブなコンポーネントが集まったコンポーネントを好きな分だけ使える便利はもの
+- CSSのカスタマイズは自由にできるので、柔軟に開発ができる！
+- CSSのVariantはいいぞ！
+- Formコンポーネントは使わなくても大丈夫！

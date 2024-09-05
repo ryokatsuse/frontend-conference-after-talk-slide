@@ -132,7 +132,6 @@ YUMEMI.growの[Compassページ](https://connpass.com/user/yumemi/open/)にて�
 前回のアクセシビリティLT会の[内容](https://yumemi.connpass.com/event/323801/)
 
 
-
 ---
 transition: slide-left
 layout: two-cols
@@ -154,9 +153,9 @@ shadcn/uiの話をしますが、最近はReact Ariaにハマっています。�
 ::right::
 
 <img
-  class="w-100"
+  class="w-100 text-center m-auto"
   src="./image/proposal.png"
-  alt="YUMEMI.grow アクセシビリティLT会"
+  alt="プロポーザル"
 />
 
 ---
@@ -167,8 +166,7 @@ transition: slide-left
 # shadcn/uiとは
 
 ---
-layout: image-right
-image: ./image/shadcn-top.png
+layout: two-cols
 transition: slide-left
 ---
 
@@ -183,6 +181,15 @@ transition: slide-left
 v0に[カンファレンスのタイムテーブル](https://v0.dev/chat/ufwOc5N02HK)的なものを作らせてみた！
 
 <small><a href="https://ui.shadcn.com/">shadcn/ui公式サイト</a> </small>
+
+::right::
+
+<img
+  class="w-100 text-center m-auto w-90"
+  src="./image/shadcn-top.png"
+  alt="shadcnのトップページ"
+/>
+
 
 ---
 
@@ -212,9 +219,8 @@ transition: slide-left
 # shadcn/uiの思想 構造とスタイルの分離
 
 ---
-layout: image-right
-image: ./image/architecture-overview.webp
-backgroundSize: contain
+layout: two-cols
+transition: slide-left
 ---
 
 # 構造
@@ -222,14 +228,23 @@ backgroundSize: contain
 - ヘッドレスUI
   - RadixUIをベースにアクセシビリティ対応だったりインタラクションの部分を提供している
   - DatePickerは[React DayPicker](https://daypicker.dev/)を使っている
-  - フォームにはついては[React Hook Form](https://react-hook-form.com/)、テーブルについては[TanStack Table](https://tanstack.com/table/latest)など
+  - フォームにはついては[React Hook Form](https://react-hook-form.com/)
+  - テーブルについては[TanStack Table](https://tanstack.com/table/latest)など
 
 <small><a href="https://manupa.dev/blog/anatomy-of-shadcn-ui">The anatomy of shadcn/ui</a> </small>
 
+::right::
+
+<img
+  class="w-100 flex item-center m-auto w-100"
+  src="./image/architecture-overview.webp"
+  alt="shadcnのレイヤーが書かれた図"
+/>
+
+
 ---
-layout: image-right
-image: ./image/architecture-overview.webp
-backgroundSize: contain
+layout: two-cols
+transition: slide-left
 ---
 
 # スタイル
@@ -240,6 +255,14 @@ backgroundSize: contain
   - 各種のVariant管理にはCVAを使用（後述します）
 
   <small><a href="https://manupa.dev/blog/anatomy-of-shadcn-ui">The anatomy of shadcn/ui</a> </small>
+
+::right::
+
+<img
+  class="w-100 flex item-center m-auto w-100"
+  src="./image/architecture-overview.webp"
+  alt="shadcnのレイヤーが書かれた図"
+/>
 
 ---
 

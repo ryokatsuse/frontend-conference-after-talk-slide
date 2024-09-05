@@ -6,11 +6,6 @@ theme: default
 background: false
 # some information about your slides (markdown enabled)
 title: shadcn/uiで考えるコンポーネント設計
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
 # apply unocss classes to the current slide
 class: text-center
 # https://sli.dev/features/drawing

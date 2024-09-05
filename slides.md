@@ -48,10 +48,9 @@ The last comment block of each slide will be treated as slide notes. It will be 
 -->
 
 ---
-layout: image-right
-image: ./image/ryokatsu.jpg
-backgroundSize: 50%
+layout: two-cols
 ---
+
 
 # About
 
@@ -65,19 +64,51 @@ backgroundSize: 50%
   - [ブログ](https://www.ryokatsu.dev/)
   - [GitHub](https://github.com/ryokatsuse)
 - 北海道で食べた美味しかったもの
-  - ジンギスカン
-<br>
-<br>
+  - ジンギスカン、〆パフェ
 
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
+::right::
 
+<div>
+  <img
+  class="text-center m-auto w-30 mb-10 rounded-50"
+  src="./image/ryokatsu.jpg"
+  alt=""
+/>
+  <div class="flex justify-center gap-5 flex-wrap">
+<div>
+  <img
+  class="text-center m-auto w-50"
+  src="./image/conference_entrance.jpg"
+  alt="フロントエンドカンファレンス北海道のエントランスがうつった画像"
+/>
 
-<!--
-Here is another comment.
--->
+</div>
+<div>
+  <img
+  class="text-center m-auto w-50"
+  src="./image/conference_novelty.jpg"
+  alt="フロントエンドカンファレンス北海道でもらったノベルティ トートバッグとネームプレートが写った画像"
+/>
+
+</div>
+<div>
+  <img
+  class="text-center m-auto w-50"
+  src="./image/jingisukann.jpg"
+  alt="だるまで食べたジンギスカンの画像 ジンギスカンを焼いている"
+/>
+
+</div>
+<div>
+  <img
+  class="text-center m-auto w-50"
+  src="./image/night_parfait.jpg"
+  alt="札幌市内で食べたパフェが写った画像"
+/>
+
+</div>
+  </div>
+</div>
 
 ---
 transition: slide-left
@@ -104,6 +135,7 @@ YUMEMI.growの[Compassページ](https://connpass.com/user/yumemi/open/)にて�
 
 ---
 transition: slide-left
+layout: two-cols
 ---
 
 # お品書き
@@ -118,6 +150,8 @@ transition: slide-left
 本日は、採択されなかったプロポーザル（LT5分枠）についてお話します！
 
 shadcn/uiの話をしますが、最近はReact Ariaにハマっています。。。！
+
+::right::
 
 <img
   class="w-100"
@@ -144,6 +178,9 @@ transition: slide-left
 - コンポーネントを好きなようにカスタマイズ可能
 - 依存関係を気にせず好きなコンポーネントを好きな分だけ導入可能
 - [v0](https://v0.dev/)で吐き出されるコードはshadcn/uiベースのもの
+
+
+v0に[カンファレンスのタイムテーブル](https://v0.dev/chat/ufwOc5N02HK)的なものを作らせてみた！
 
 <small><a href="https://ui.shadcn.com/">shadcn/ui公式サイト</a> </small>
 
@@ -237,6 +274,22 @@ transition: slide-left
 
 ---
 
+# CVAとは
+
+- プライマリー、セカンダリーボタンのようなコンポーネントを実装するとき
+  - classnamesやclsxなどを使って条件分岐によってスタイルを切り替える
+  - そもそもコンポーネントを分割してしまう
+  - 大量のpropsがあると何を渡せばいいかわからなくなる。。。
+- そんな悩みを解決してくれるのがCVA！
+- 最終的に出力されるCSSがどのような状態のスタイルなのかが構造化されているので見やすい
+- [FigmaのVariants](https://help.figma.com/hc/ja/articles/360056440594-%E3%83%90%E3%83%AA%E3%82%A2%E3%83%B3%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BD%BF%E7%94%A8)の概念をそのままコードに落とし込めるようなイメージ
+
+<br>
+
+ちなみに、TailwindCSSの場合は、cvaより拡張性の高い[Tailwind Variants](https://www.tailwind-variants.org/)があります
+
+---
+
 ## こういうやつ
 
 
@@ -264,22 +317,6 @@ const buttonVariants = cva(
   }
 )
 ```
-
----
-
-# CVAとは
-
-- プライマリー、セカンダリーボタンのようなコンポーネントを実装するとき
-  - classnamesやclsxなどを使って条件分岐によってスタイルを切り替える
-  - そもそもコンポーネントを分割してしまう
-  - 大量のpropsがあると何を渡せばいいかわからなくなる。。。
-- そんな悩みを解決してくれるのがCVA！
-- 最終的に出力されるCSSがどのような状態のスタイルなのかが構造化されているので見やすい
-- [FigmaのVariants](https://help.figma.com/hc/ja/articles/360056440594-%E3%83%90%E3%83%AA%E3%82%A2%E3%83%B3%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BD%BF%E7%94%A8)の概念をそのままコードに落とし込めるようなイメージ
-
-<br>
-
-ちなみに、TailwindCSSの場合は、cvaより拡張性の高い[Tailwind Variants](https://www.tailwind-variants.org/)があります
 
 ---
 
@@ -455,7 +492,7 @@ export { Block };
 
 # まとめ
 
-- shadcn/uiはプリミティブなコンポーネントが集まったコンポーネントを好きな分だけ使える便利はもの
-- CSSのカスタマイズは自由にできるので、柔軟に開発ができる！
-- CSSのVariantはいいぞ！
+- shadcn/uiはプリミティブなコンポーネントが集まったコンポーネントを好きな分だけ使える便利なもの
+- 構造とスタイルのレイヤーに分離されていて、カスタマイズが自由にできるので、柔軟に開発ができる！
+- Variantはいいぞ！
 - Formコンポーネントは使わなくても大丈夫！

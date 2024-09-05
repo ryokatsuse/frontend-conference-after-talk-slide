@@ -262,7 +262,7 @@ transition: slide-left
 ---
 
 
-## なぜこうなっているのか？
+## なぜこうなっているのか？🤔
 
 [Introduction](https://ui.shadcn.com/docs)に記述がある
 
@@ -278,8 +278,10 @@ transition: slide-left
 
 コンポーネントの構築方法とスタイルを決定できるようにすることが重要と考えています。
 
+<span v-mark="{ at: 1, color: 'red'}">
+パッケージの欠点の1つはパッケージ化すると、スタイルと実装が密結合なっている。
+</span>
 
-***パッケージの欠点の1つはパッケージ化すると、スタイルと実装が密結合なっている。***
 
 コンポーネントのデザインは実装と切り離すべき！！
 
@@ -304,7 +306,7 @@ transition: slide-left
 
 <br>
 
-ちなみに、TailwindCSSの場合は、cvaより拡張性の高い[Tailwind Variants](https://www.tailwind-variants.org/)があります
+ちなみに、TailwindCSSの場合は、cvaより拡張性の高い[Tailwind Variants](https://www.tailwind-variants.org/)があります🙌
 
 ---
 
@@ -410,7 +412,7 @@ layout: two-cols
 - shadcn/uiにはFormコンポーネントがある
 - 内部的にReact Hook Formを使っている
 - 実際のプロジェクトでもFormコンポーネントを使った。
-- 普段からReact Hook Formを使っていればそこまでハマることはない。
+- 普段からReact Hook Formを使っていればそこまでハマることはない。（多分...）
 
 ::right::
 
@@ -510,7 +512,7 @@ export { Block };
 
 # まとめ
 
-- shadcn/uiはプリミティブなコンポーネントが集まったコンポーネントを好きな分だけ使える便利なもの
-- 構造とスタイルのレイヤーに分離されていて、カスタマイズが自由にできるので、柔軟に開発ができる！
+- shadcn/uiはコンポーネントを、好きなだけ導入できるコンポーネント集
+- 構造とスタイルのレイヤーに分離されていて、カスタマイズが自由にできるので柔軟に開発ができる！
 - Variantはいいぞ！
 - Formコンポーネントは使わなくても大丈夫！

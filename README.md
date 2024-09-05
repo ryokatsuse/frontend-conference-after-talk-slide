@@ -1,11 +1,4 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
+# shadcn/uiで考えるコンポーネント設計
 
-To start the slide show:
 
-- `npm install`
-- `npm run dev`
-- visit <http://localhost:3030>
-
-Edit the [slides.md](./slides.md) to see the changes.
-
-Learn more about Slidev at the [documentation](https://sli.dev/).
+[ゆめみ×LayerX×サイボウズ3社合同フロントエンドカンファレンス北海道2024](https://yumemi.connpass.com/event/326311/)での登壇資料
